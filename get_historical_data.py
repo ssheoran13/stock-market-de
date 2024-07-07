@@ -5,7 +5,7 @@ from alpha_vantage.timeseries import TimeSeries
 import mysql.connector
 
 
-API_KEY = 'XNHV18T6PPZJWD9N'
+API_KEY = 'QP0UW548NREADMP5'
 
 
 companies = {
