@@ -66,7 +66,7 @@ def fetch_historical_data(symbol, start_date, end_date):
 def save_data(data,cursor,conn):
     cursor.execute('CREATE DATABASE if not exists central_stock_db;')
     cursor.execute('use central_stock_db;')
-    cursor.execute("""CREATE TABLE IF NOT EXISTS daily_stock_data (
+    cursor.execute("""CREATE TABLE IF NOT EXISTS historical_stock_data (
         date DATE ,
         open DECIMAL(10,2) NOT NULL,
         high DECIMAL(10,2) NOT NULL,
