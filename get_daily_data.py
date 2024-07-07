@@ -44,7 +44,7 @@ def get_yesterday_date():
 
 
 yesterday = get_yesterday_date()
-# yesterday='2024-05-01'
+yesterday='2024-06-04'
 
 
 def fetch_historical_data(symbol, start_date, end_date):
@@ -74,13 +74,14 @@ def save_data(data,cursor,conn):
     cursor.execute('CREATE DATABASE if not exists central_stock_db;')
     cursor.execute('use central_stock_db;')
     cursor.execute("""CREATE TABLE IF NOT EXISTS daily_stock_data (
-        date DATE PRIMARY KEY,
+        date DATE ,
         open DECIMAL(10,2) NOT NULL,
         high DECIMAL(10,2) NOT NULL,
         low DECIMAL(10,2) NOT NULL,
         close DECIMAL(10,2) NOT NULL,
         volume BIGINT NOT NULL,
-        Company VARCHAR(255) NOT NULL
+        Company VARCHAR(255) NOT NULL,
+        PRIMARY KEY (date, Company) 
     )""")
 
     # Insert data using a bulk insert for efficiency
@@ -100,7 +101,7 @@ for symbol, company in companies.items():
     data = fetch_historical_data(symbol, yesterday, yesterday)
     if data is not None:
         all_data.append(data)
-        save_data(data)
+        save_data(data,cursor,conn)
         
     time.sleep(12)  
 
