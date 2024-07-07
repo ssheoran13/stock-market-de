@@ -44,7 +44,7 @@ def get_yesterday_date():
 
 
 yesterday = get_yesterday_date()
-yesterday='2024-06-05'
+# yesterday='2024-06-05'
 
 
 def fetch_historical_data(symbol, start_date, end_date):
